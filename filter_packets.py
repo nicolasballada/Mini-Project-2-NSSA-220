@@ -1,7 +1,6 @@
 import sys
 
-def filter(fn) :
-    fileName = sys.argv[1]
+def filter( fileName ) :
     read( fileName )
 	
 def read(fn) :
