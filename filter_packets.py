@@ -22,9 +22,6 @@ def read(file_name):
         line = unfiltered_node.readline()
 
 
-fn = "file.txt"
-
-init(fn)
 
 	
 	
