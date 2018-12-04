@@ -7,7 +7,7 @@ import sys
 fileName = sys.argv[1]
 
 filter(fileName)
-parse()
+parse(fileName)
 compute()
 
 
