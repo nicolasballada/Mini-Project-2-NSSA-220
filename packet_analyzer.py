@@ -6,8 +6,11 @@ import sys
 
 fileName = sys.argv[1]
 
+L = []
+
 filter(fileName)
-parse(fileName)
-compute()
+parse(fileName, L)
+compute(L)
+
 
 
