@@ -133,6 +133,28 @@ def echoRequestGoodput(node, ip):
             total = total + (float(node[i + 1][1]) - float(node[i][1]))
     return (numRequestDataSent(ip)/total)/1000
 
+def avgDelayReply(ip):
+    total = 0
+    h = 0
+    for i in range(0, len(node1), 2):
+        if node1[i][3] == ip and node1[i][8] == "request":
+            total = total + (float(node1[i + 1][1]) - float(node1[i][1]))
+            h = h + 1
+    return ((total/h) * 1000000)
+
+def avgHop(node):
+    hop = 0
+    hopnum = 129
+    requestcount = 0
+    for i in range(0, len(node), 2):
+        if node[i][8] == "request":
+            hop = hop + (hopnum - (int("".join(filter(str.isdigit, node[i][11])))))
+            requestcount = requestcount + 1
+
+        else:
+            continue
+    return float(hop) / float(requestcount)
+
 parse("Node1_filtered.txt", node1)
 parse("Node2_filtered.txt", node2)
 parse("Node3_filtered.txt", node3)
