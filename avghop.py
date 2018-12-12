@@ -4,7 +4,7 @@ def avgHop(node):
     requestcount = 0
     for i in range(0, len(node), 2):
         if node[i][8] == "request":
-            hop = hopnum - (hop + int(filter(str.isdigit, node[i][11])))
+            hop = hop + (hopnum - (int(filter(str.isdigit, node[i][11]))))
             requestcount = requestcount + 1
 
         else:
