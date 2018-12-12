@@ -117,7 +117,7 @@ def numRequestDataRecieved(ip):
 def rtt(node, ip):
     total = 0
     count = 0
-    for i in range(0, len(node1), 2):
+    for i in range(0, len(node), 2):
         if node[i][2] == ip and node[i][8] == "request":
             total = total + (float(node[i + 1][1]) - float(node[i][1]))
             count = count + 1
