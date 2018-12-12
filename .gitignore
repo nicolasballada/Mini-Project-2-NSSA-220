@@ -1,9 +1,0 @@
-
-.idea/Mini-Project-2-NSSA-220.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
-compute_metrics.pyc
-filter_packets.pyc
-packet_parser.pyc
