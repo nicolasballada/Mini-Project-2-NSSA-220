@@ -113,13 +113,15 @@ def numRequestDataRecieved(ip):
     return total
 
 # Logic for Time Metrics
-# NOT WORKING
 
-def rtt(node):
+def rtt(node, ip):
     total = 0
-    for i in range(0, len(node), 2):
-        total = total + (float(node[i + 1][1]) - float(node[i][1]))
-    return total / (len(node)/2)
+    count = 0
+    for i in range(0, len(node1), 2):
+        if node[i][2] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
+            count = count + 1
+    return total / count
 
 def echoRequestThroughput(node, ip):
     total = 0
