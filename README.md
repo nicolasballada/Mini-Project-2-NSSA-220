@@ -3,7 +3,7 @@ Packet Capture Analysis Tool | NSSA 220 at RIT
 
 This python program analyzes raw packet captures in txt form and outputs data from ICMP packets.
 
-python packet_analyzer.py Node#.txt
+_python packet_analyzer.py Node#.txt_
 
 Output: output.csv
 
