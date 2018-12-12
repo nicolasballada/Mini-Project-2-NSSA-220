@@ -126,14 +126,16 @@ def rtt(node, ip):
 def echoRequestThroughput(node, ip):
     total = 0
     for i in range(0, len(node), 2):
-        total = total + (float(node[i + 1][1]) - float(node[i][1]))
-    return numRequestBytesSent(ip)/total
+        if node[i][2] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return (numRequestBytesSent(ip)/total)/1000
 
 def echoRequestGoodput(node, ip):
     total = 0
     for i in range(0, len(node), 2):
-        total = total + (float(node[i + 1][1]) - float(node[i][1]))
-    return numRequestDataSent(ip)/total
+        if node[i][2] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return (numRequestDataSent(ip)/total)/1000
 
 parse("Node1_filtered.txt", node1)
 parse("Node2_filtered.txt", node2)
