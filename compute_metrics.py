@@ -16,33 +16,30 @@ def parse(file_name, L):
     file.close()
 	
 def computing(node, ip):
-	reqsent = 0;
-	reqrecieved = 0;
-	
-	repsent = 0;
-	reprecieved = 0;
-	
-	for i in range(len(node)):
-		print node[i][10]
-	
-		if node[i][8] == "reply":
-			if node[i][2] == ip:
-				repsent = repsent + 1
-			elif node[i][3] == ip:
-				reprecieved = reprecieved + 1
-				
-		if node[i][8] == "request":
-			if node[i][2] == ip:
-				reqsent = reqsent + 1
-			elif node[i][3] == ip:
-				reqrecieved = reqrecieved + 1
-				
-	
-	print "Requests Sent: " + str(reqsent)
-	print "Requests Recieved: " + str(reqrecieved)
-	
-	print "Replies Sent: " + str(repsent)
-	print "Replies Recieved: " + str(reprecieved)
+    reqsent = 0;
+    reqrecieved = 0;
+
+    repsent = 0;
+    reprecieved = 0;
+
+    for i in range(len(node)):
+        if node[i][8] == "reply":
+            if node[i][2] == ip:
+                repsent = repsent + 1
+            elif node[i][3] == ip:
+                reprecieved = reprecieved + 1
+
+        if node[i][8] == "request":
+            if node[i][2] == ip:
+                reqsent = reqsent + 1
+            elif node[i][3] == ip:
+                reqrecieved = reqrecieved + 1
+
+    print("Requests Sent: " + str(reqsent))
+    print("Requests Recieved: " + str(reqrecieved))
+
+    print("Replies Sent: " + str(repsent))
+    print("Replies Recieved: " + str(reprecieved))
 
 def numRequestBytesSent(ip):
     total = 0
