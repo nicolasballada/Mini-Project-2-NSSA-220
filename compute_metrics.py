@@ -133,12 +133,12 @@ def echoRequestGoodput(node, ip):
             total = total + (float(node[i + 1][1]) - float(node[i][1]))
     return (numRequestDataSent(ip)/total)/1000
 
-def avgDelayReply(ip):
+def avgDelayReply(node, ip):
     total = 0
     h = 0
-    for i in range(0, len(node1), 2):
-        if node1[i][3] == ip and node1[i][8] == "request":
-            total = total + (float(node1[i + 1][1]) - float(node1[i][1]))
+    for i in range(0, len(node), 2):
+        if node[i][3] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
             h = h + 1
     return ((total/h) * 1000000)
 
