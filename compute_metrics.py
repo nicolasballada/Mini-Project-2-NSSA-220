@@ -19,26 +19,26 @@ def parse(file_name, L):
         L.append(line.split())
     file.close()
 	
-def computing(L):
+def computing(node, ip):
 	reqsent = 0;
 	reqrecieved = 0;
 	
 	repsent = 0;
 	reprecieved = 0;
 	
-	for i in range(len(L)):
-		print L[i][10]
+	for i in range(len(node)):
+		print node[i][10]
 	
-		if L[i][8] == "reply":
-			if L[i][2] == "192.168.100.1":
+		if node[i][8] == "reply":
+			if node[i][2] == ip:
 				repsent = repsent + 1
-			elif L[i][3] == "192.168.100.1":
+			elif node[i][3] == ip:
 				reprecieved = reprecieved + 1
 				
-		if L[i][8] == "request":
-			if L[i][2] == "192.168.100.1":
+		if node[i][8] == "request":
+			if node[i][2] == ip:
 				reqsent = reqsent + 1
-			elif L[i][3] == "192.168.100.1":
+			elif node[i][3] == ip:
 				reqrecieved = reqrecieved + 1
 				
 	
@@ -113,25 +113,29 @@ def numRequestDataRecieved(ip):
     return total
 
 # Logic for Time Metrics
-# NOT WORKING
 
-def rtt(node):
+def rtt(node, ip):
     total = 0
+    count = 0
     for i in range(0, len(node), 2):
-        total = total + (float(node[i + 1][1]) - float(node[i][1]))
-    return total / (len(node)/2)
+        if node[i][2] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
+            count = count + 1
+    return total / count
 
 def echoRequestThroughput(node, ip):
     total = 0
     for i in range(0, len(node), 2):
-        total = total + (float(node[i + 1][1]) - float(node[i][1]))
-    return numRequestBytesSent(ip)/total
+        if node[i][2] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return (numRequestBytesSent(ip)/total)/1000
 
 def echoRequestGoodput(node, ip):
     total = 0
     for i in range(0, len(node), 2):
-        total = total + (float(node[i + 1][1]) - float(node[i][1]))
-    return numRequestDataSent(ip)/total
+        if node[i][2] == ip and node[i][8] == "request":
+            total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return (numRequestDataSent(ip)/total)/1000
 
 parse("Node1_filtered.txt", node1)
 parse("Node2_filtered.txt", node2)
