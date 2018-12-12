@@ -112,6 +112,27 @@ def numRequestDataRecieved(ip):
             total = total + int(n4[5]) - 42
     return total
 
+# Logic for Time Metrics
+# NOT WORKING
+
+def rtt(node):
+    total = 0
+    for i in range(0, len(node), 2):
+        total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return total / (len(node)/2)
+
+def echoRequestThroughput(node, ip):
+    total = 0
+    for i in range(0, len(node), 2):
+        total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return numRequestBytesSent(ip)/total
+
+def echoRequestGoodput(node, ip):
+    total = 0
+    for i in range(0, len(node), 2):
+        total = total + (float(node[i + 1][1]) - float(node[i][1]))
+    return numRequestDataSent(ip)/total
+
 parse("Node1_filtered.txt", node1)
 parse("Node2_filtered.txt", node2)
 parse("Node3_filtered.txt", node3)
