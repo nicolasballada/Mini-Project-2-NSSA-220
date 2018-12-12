@@ -9,10 +9,6 @@ node3 = []
 node4 = []
 node5 = []
 
-def compute(L) :
-	print 'called compute function in compute_metrics.py'
-	computing(L)
-
 def parse(file_name, L):
     file = open(file_name, "r")
     for line in file:
