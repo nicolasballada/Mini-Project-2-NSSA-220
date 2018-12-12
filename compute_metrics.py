@@ -104,6 +104,11 @@ def avgHop(node):
 
 def output(reqsent, reqrecieved, repsent, reprecieved, node, ip, midstep):
     outputName = midstep[0]
+
+    if("1" in outputName):
+        deleteoutput = open("output.csv", "w")
+        deleteoutput.close()
+
     output = open("output.csv", "a")
     output.write(outputName)
     output.write("  \n")
@@ -121,6 +126,7 @@ def output(reqsent, reqrecieved, repsent, reprecieved, node, ip, midstep):
     output.write("Average Reply Delay" + "," + str(avgDelayReply(node, ip)) + "\n")
     output.write("Average Echo Request Hop Count" + "," + str(avgHop(node)) + "\n")
     output.write(" \n")
+    output.close()
 
     
 
